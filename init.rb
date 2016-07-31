@@ -1,3 +1,11 @@
+require 'wiki_controller_patch'
+
+ActionDispatch::Callbacks.to_prepare do
+  unless WikiController.included_modules.include? WikiControllerPatch
+    WikiController.send(:include, WikiControllerPatch)
+  end
+end
+
 Redmine::Plugin.register :public_wiki_pages do
   name 'Public Wiki Pages plugin'
   author 'Tom Smyth'
