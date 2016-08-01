@@ -5,6 +5,15 @@ module WikiControllerPatch
   end
 
   module InstanceMethods
+
+    def toggle_public
+      find_existing_page
+      @page.update_attribute(:public, !@page.public?)
+      redirect_to project_wiki_page_path(@project, @page.title)
+    end
+
+    private
+
     def not_logged_in_and_page_is_public?
       return false unless User.current
       find_existing_page

@@ -8,6 +8,10 @@ ActionDispatch::Callbacks.to_prepare do
   end
 end
 
+Redmine::AccessControl.map do |map|
+  map.permission :make_public_wiki_pages, :wiki => [:toggle_public]
+end
+
 Redmine::Plugin.register :public_wiki_pages do
   name 'Public Wiki Pages plugin'
   author 'Tom Smyth'

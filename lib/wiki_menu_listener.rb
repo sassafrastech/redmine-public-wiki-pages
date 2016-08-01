@@ -5,7 +5,7 @@ class WikiMenuListener < Redmine::Hook::ViewListener
     link_text = view.l(page.public? ? :make_private : :make_public, scope: "public_wiki_pages")
     link_icon = page.public? ? "lock" : "unlock"
 
-    view.link_to_if_authorized(link_text, {action: 'edit', id: page.title},
-      class: "icon icon-#{link_icon} public-link")
+    view.link_to_if_authorized(link_text, {action: 'toggle_public', id: page.title},
+      class: "icon icon-#{link_icon}", data: { method: "patch" })
   end
 end
