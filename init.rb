@@ -1,4 +1,6 @@
+require_dependency 'wiki_menu_listener'
 require 'wiki_controller_patch'
+require 'wiki_menu_listener'
 
 ActionDispatch::Callbacks.to_prepare do
   unless WikiController.included_modules.include? WikiControllerPatch

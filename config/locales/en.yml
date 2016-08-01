@@ -1,3 +1,5 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  public_wiki_pages:
+    make_public: "Make Public"
+    make_private: "Make Private"
